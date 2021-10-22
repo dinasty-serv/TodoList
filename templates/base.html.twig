@@ -36,6 +36,7 @@
         </button>
 
             <div class="collapse navbar-collapse" id="navbarText">
+                {% if app.user and is_granted('ROLE_ADMIN') %}
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -48,6 +49,7 @@
                         </div>
                     </li>
                 </ul>
+                {% endif %}
                 <span class="navbar-text">
               <ul class="navbar-nav mr-auto">
                     <li class="nav-item">

@@ -7,13 +7,14 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use App\Entity\Task;
-use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 
 class TaskFixtures extends Fixture implements DependentFixtureInterface{
 
 
-
+    /**
+     * @param ObjectManager $manager
+     */
     public function load(ObjectManager $manager)
     {
         $users = $manager->getRepository(User::class)->findAll();
@@ -30,18 +31,13 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface{
                 }else{
                     $task->setUser(null);
                 }
+                    $task->toggle(rand(0, 1));
+
 
                 $manager->persist($task);
             }
             $manager->flush();
         }
-
-
-
-
-
-
-
     }
 
     public function getDependencies()
