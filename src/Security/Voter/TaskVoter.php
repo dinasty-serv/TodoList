@@ -75,7 +75,9 @@ class TaskVoter extends Voter
      */
     private function caneditTask(Task $task, User $user): bool
     {
-        return $user === $task->getUser();
+        if ($this->security->isGranted('ROLE_ADMIN') || $user === $task->getUser()) {
+            return true;
+        }
     }
 
     /**
