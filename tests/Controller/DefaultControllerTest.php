@@ -9,10 +9,17 @@ use App\Tests\Service\Authentificator;
 
 class DefaultControllerTest extends WebTestCase
 {
+    /**
+     * @var Authentificator
+     */
     private $client;
+
     public function setUp(): void
     {
-        $client = new Authentificator(static::createClient(), static::getContainer()->get(EntityManagerInterface::class));
+        $client = new Authentificator(
+            static::createClient(),
+            static::getContainer()->get(EntityManagerInterface::class)
+        );
         $this->client = $client;
     }
     /**

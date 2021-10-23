@@ -35,11 +35,11 @@ class TaskController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $task->setUser($this->getUser());
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($task);
             $entityManager->flush();
+            $this->addFlash('success', 'La tâche a été bien été ajoutée.');
 
             return $this->redirectToRoute('task_list', [], Response::HTTP_SEE_OTHER);
         }
@@ -71,6 +71,7 @@ class TaskController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
+            $this->addFlash('success', 'La tâche a été bien été modifié.');
 
             return $this->redirectToRoute('task_list', [], Response::HTTP_SEE_OTHER);
         }
@@ -88,10 +89,13 @@ class TaskController extends AbstractController
     {
         $this->denyAccessUnlessGranted('deleteTask', $task);
 
-        if ($this->isCsrfTokenValid('delete'.$task->getId(), $request->request->get('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $task->getId(), $request->request->get('_token'))) {
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($task);
+
             $entityManager->flush();
+            $this->addFlash('success', 'La tâche a été bien été supprimé.');
+
         }
 
         return $this->redirectToRoute('task_list', [], Response::HTTP_SEE_OTHER);
