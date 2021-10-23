@@ -39,7 +39,7 @@ class Authentificator
     public function getClientLoginUser()
     {
 
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(["email" => "test@email1.com"]);
+        $user = $this->entityManager->getRepository(User::class)->findOneBy(["email" => "test@email4.com"]);
 
         // simulate $testUser being logged in
         $this->client->loginUser($user);
