@@ -133,17 +133,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return null;
     }
-
-    /**
-     * @see UserInterface
-     */
-    public function eraseCredentials()
-    {
-        // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
-    }
-
-
     public function setUsername(string $username): self
     {
         $this->username = $username;
@@ -172,7 +161,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function removeTask(Task $task): self
     {
         if ($this->tasks->removeElement($task)) {
-            // set the owning side to null (unless already changed)
             if ($task->getUser() === $this) {
                 $task->setUser(null);
             }
