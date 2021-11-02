@@ -20,20 +20,7 @@ class TaskType extends AbstractType
         $builder
             ->add('title', TextType::class,['label' => "Nom de la tache", 'attr' => ['class' => 'form-control']])
             ->add('content', TextareaType::class, ['label' => "Contenu de la tâche", 'attr' => ['class' => 'form-control']])
-           // ->add('isDone', CheckboxType::class, ['label' => "Tâche terminé ?", 'attr' => ['class' => 'form-control']])
 
-            /*->add('user', EntityType::class, [
-                // looks for choices from this entity
-                'class' => User::class,
-
-                // uses the User.username property as the visible option string
-                'choice_label' => 'username',
-                'label' => "Utlisateur assignié", 'attr' => ['class' => 'form-control']
-
-                // used to render a select box, check boxes or radios
-                // 'multiple' => true,
-                // 'expanded' => true,
-            ]);*/
         ;
     }
 
