@@ -93,4 +93,40 @@ class UserControllerTest extends WebTestCase
         $successMessage = $crawler->filter('div.alert.alert-success')->text();
         $this->assertStringContainsString('Superbe ! L\'utilisateur à bien été modifié !', $successMessage);
     }
+
+    public function testShowUser()
+    {
+
+        $client = $this->client->getClientLoginAdmin();
+
+        $crawler = $client->request(
+            'GET',
+            '/user/'
+        );
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+
+        $link = $crawler->selectLink("show")->link();
+        $client->click($link);
+
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
+
+    public function testDeleteUser()
+    {
+        $client = $this->client->getClientLoginAdmin();
+        $crawler = $client->request(
+            'GET',
+            '/user/'
+        );
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $link = $crawler->selectLink("show")->link();
+        $crawler = $client->click($link);
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+        $form = $crawler->selectButton("Supprimer")->form();
+        $client->submit($form);
+        $crawler = $client->followRedirect();
+        $successMessage = $crawler->filter('div.alert.alert-success')->text();
+        $this->assertStringContainsString('L\'utilisateur à bien été supprimé !', $successMessage);
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+    }
 }

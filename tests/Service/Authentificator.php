@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Tests\Service;
+
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\KernelBrowser;
@@ -23,11 +24,13 @@ class Authentificator
         $this->entityManager = $entityManager;
     }
 
-    public function getClientNotLogin(){
+    public function getClientNotLogin()
+    {
         return $this->client;
     }
 
-    public function getClientLoginAdmin(){
+    public function getClientLoginAdmin()
+    {
 
         $user = $this->entityManager->getRepository(User::class)->findOneBy(["email" => "admin@email.com"]);
 
@@ -39,11 +42,10 @@ class Authentificator
     public function getClientLoginUser()
     {
 
-        $user = $this->entityManager->getRepository(User::class)->findOneBy(["email" => "test@email1.com"]);
+        $user = $this->entityManager->getRepository(User::class)->findOneBy(["email" => "test@email4.com"]);
 
         // simulate $testUser being logged in
         $this->client->loginUser($user);
         return $this->client;
     }
-
 }

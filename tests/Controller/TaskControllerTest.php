@@ -87,7 +87,7 @@ class TaskControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         $successMessage = $crawler->filter('div.alert.alert-success')->text();
-        $this->assertStringContainsString('La tâche a été bien été modifié.', $successMessage);
+        $this->assertStringContainsString('Superbe ! La tâche a été bien été modifé.', $successMessage);
     }
 
     public function testDeleteTask()
@@ -103,5 +103,21 @@ class TaskControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
         $successMessage = $crawler->filter('div.alert.alert-success')->text();
         $this->assertStringContainsString('La tâche a été bien été supprimé.', $successMessage);
+    }
+
+    public function testToggleTask()
+    {
+
+        $client = $this->client->getClientLoginUser();
+
+        $crawler = $client->request(
+            'GET',
+            '/task/'
+        );
+        $this->assertEquals(200, $client->getResponse()->getStatusCode());
+
+        $form = $crawler->selectButton("Marquer comme faite")->form();
+        $client->submit($form);
+        $client->followRedirect();
     }
 }
