@@ -4,7 +4,7 @@
     "minimum-stability": "stable",
     "prefer-stable": true,
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "composer/package-versions-deprecated": "1.11.99.4",
@@ -83,6 +83,18 @@
             "php bin/console doctrine:database:create --env=test",
             "php bin/console doctrine:schema:update --force --env=test",
             "php bin/console doctrine:fixtures:load -n --env=test"
+        ],
+        "prepare-dev": [
+            "php bin/console doctrine:database:drop --if-exists --force --env=dev",
+            "php bin/console doctrine:database:create --env=dev",
+            "php bin/console doctrine:schema:update --force --env=dev",
+            "php bin/console doctrine:fixtures:load -n --env=dev"
+        ],
+        "prepare-prod": [
+            "php bin/console doctrine:database:drop --if-exists --force --env=prod",
+            "php bin/console doctrine:database:create --env=prod",
+            "php bin/console doctrine:schema:update --force --env=prod"
+
         ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
