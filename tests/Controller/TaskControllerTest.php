@@ -87,7 +87,7 @@ class TaskControllerTest extends WebTestCase
         $crawler = $client->followRedirect();
 
         $successMessage = $crawler->filter('div.alert.alert-success')->text();
-        $this->assertStringContainsString('La tâche a été bien été modifié.', $successMessage);
+        $this->assertStringContainsString('Superbe ! La tâche a été bien été modifé.', $successMessage);
     }
 
     public function testDeleteTask()

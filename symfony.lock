@@ -121,6 +121,9 @@
     "phar-io/version": {
         "version": "3.1.0"
     },
+    "php-webdriver/webdriver": {
+        "version": "1.12.0"
+    },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
     },
@@ -247,6 +250,18 @@
         },
         "files": [
             "phpcs.xml.dist"
+        ]
+    },
+    "symfony/apache-pack": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "9d254a22efca7264203eea98b866f16f944b2f09"
+        },
+        "files": [
+            "public/.htaccess"
         ]
     },
     "symfony/asset": {
@@ -429,6 +444,15 @@
     },
     "symfony/options-resolver": {
         "version": "v5.3.7"
+    },
+    "symfony/panther": {
+        "version": "1.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.0",
+            "ref": "877d853a05c6713665a2f4b954734592680abff6"
+        }
     },
     "symfony/password-hasher": {
         "version": "v5.3.8"
