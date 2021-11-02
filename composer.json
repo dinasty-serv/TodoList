@@ -14,6 +14,7 @@
         "doctrine/orm": "^2.10",
         "phpdocumentor/reflection-docblock": "^5.3",
         "sensio/framework-extra-bundle": "^6.1",
+        "symfony/apache-pack": "^1.0",
         "symfony/asset": "5.3.*",
         "symfony/console": "5.3.*",
         "symfony/dotenv": "5.3.*",
@@ -84,6 +85,17 @@
             "php bin/console doctrine:database:create --env=test",
             "php bin/console doctrine:schema:update --force --env=test",
             "php bin/console doctrine:fixtures:load -n --env=test"
+        ],
+        "prepare-dev": [
+            "php bin/console doctrine:database:drop --if-exists --force --env=dev",
+            "php bin/console doctrine:database:create --env=dev",
+            "php bin/console doctrine:schema:update --force --env=dev",
+            "php bin/console doctrine:fixtures:load -n --env=dev"
+        ],
+        "prepare-prod": [
+            "php bin/console doctrine:database:drop --if-exists --force --env=prod",
+            "php bin/console doctrine:database:create --env=prod",
+            "php bin/console doctrine:schema:update --force --env=prod"
         ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
