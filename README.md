@@ -44,7 +44,7 @@ Dans le répertoire des sources taper la commande suivante
     composer start-test
 Cette commande va initialisé une base de données avec des données factice pour réaliser les différents tests. 
 
-A l'issue de ces tests vous aurez le résultat suivant si tout les tests sont au passé: 
+A l'issue de ces tests vous aurez le résultat suivant si tout les tests sont passé: 
     
     PHPUnit 9.5.10 by Sebastian Bergmann and contributors.
 
