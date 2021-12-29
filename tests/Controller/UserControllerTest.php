@@ -51,6 +51,10 @@ class UserControllerTest extends WebTestCase
         $this->assertEquals(200, $this->client->getClientLoginUser()->getResponse()->getStatusCode());
     }
 
+    /**
+     * Test create new User
+     * @return void
+     */
     public function testCreateNewUser()
     {
         $client =  $this->client->getClientLoginAdmin();
@@ -70,6 +74,10 @@ class UserControllerTest extends WebTestCase
         $this->assertStringContainsString('Superbe ! L\'utilisateur à bien été ajouté !', $successMessage);
     }
 
+    /**
+     * Test edit User
+     * @return void
+     */
     public function testEditUser()
     {
         $client = $this->client->getClientLoginAdmin();
@@ -94,6 +102,10 @@ class UserControllerTest extends WebTestCase
         $this->assertStringContainsString('Superbe ! L\'utilisateur à bien été modifié !', $successMessage);
     }
 
+    /**
+     * Test show User
+     * @return void
+     */
     public function testShowUser()
     {
 
@@ -105,12 +117,16 @@ class UserControllerTest extends WebTestCase
         );
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
-        $link = $crawler->selectLink("show")->link();
+        $link = $crawler->selectLink("Voir")->link();
         $client->click($link);
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
     }
 
+    /**
+     * Test delete User
+     * @return void
+     */
     public function testDeleteUser()
     {
         $client = $this->client->getClientLoginAdmin();
@@ -119,7 +135,7 @@ class UserControllerTest extends WebTestCase
             '/user/'
         );
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $link = $crawler->selectLink("show")->link();
+        $link = $crawler->selectLink("Voir")->link();
         $crawler = $client->click($link);
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $form = $crawler->selectButton("Supprimer")->form();

@@ -50,6 +50,10 @@ class TaskControllerTest extends WebTestCase
         $this->assertEquals(200, $this->client->getClientLoginUser()->getResponse()->getStatusCode());
     }
 
+    /**
+     * Test create new task
+     * @return void
+     */
     public function testCreateNewTask()
     {
 
@@ -66,6 +70,10 @@ class TaskControllerTest extends WebTestCase
         $this->assertStringContainsString('La tâche a été bien été ajoutée.', $successMessage);
     }
 
+    /**
+     * Test edit task
+     * @return void
+     */
     public function testEditTask()
     {
         $client = $this->client->getClientLoginUser();
@@ -90,6 +98,10 @@ class TaskControllerTest extends WebTestCase
         $this->assertStringContainsString('Superbe ! La tâche a été bien été modifé.', $successMessage);
     }
 
+    /**
+     * Test delete task
+     * @return void
+     */
     public function testDeleteTask()
     {
         $client = $this->client->getClientLoginUser();
@@ -105,6 +117,10 @@ class TaskControllerTest extends WebTestCase
         $this->assertStringContainsString('La tâche a été bien été supprimé.', $successMessage);
     }
 
+    /**
+     * Test Toggle Task
+     * @return void
+     */
     public function testToggleTask()
     {
 
