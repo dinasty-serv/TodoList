@@ -22,6 +22,7 @@ class UserController extends AbstractController
      * @Route("/", name="user_index", methods={"GET"})
      * @param UserRepository $userRepository
      * @return Response
+     * @author Nicolas de Fontaine
      */
 
     public function index(UserRepository $userRepository): Response
@@ -35,6 +36,7 @@ class UserController extends AbstractController
      * @param Request $request
      * @param UserService $userService
      * @return Response
+     * @author Nicolas de Fontaine
      */
 
     public function new(Request $request, UserService $userService): Response
@@ -56,6 +58,7 @@ class UserController extends AbstractController
      * @Route("/{id}", name="user_show", methods={"GET"})
      * @param User $user
      * @return Response
+     * @author Nicolas de Fontaine
      */
 
     public function show(User $user): Response
@@ -70,6 +73,7 @@ class UserController extends AbstractController
      * @param User $user
      * @param UserService $userService
      * @return Response
+     * @author Nicolas de Fontaine
      */
 
     public function edit(Request $request, User $user, UserService $userService): Response
@@ -92,6 +96,7 @@ class UserController extends AbstractController
      * @param User $user
      * @param UserService $userService
      * @return Response
+     * @author Nicolas de Fontaine
      */
 
     public function delete(Request $request, User $user, UserService $userService): Response

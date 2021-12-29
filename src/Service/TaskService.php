@@ -14,6 +14,11 @@ class TaskService extends Service
      */
     private $security;
 
+    /**
+     * @param EntityManagerInterface $entityManager
+     * @param PasswordHasherFactoryInterface $encoder
+     * @param Security $security
+     */
     public function __construct(
         EntityManagerInterface $entityManager,
         PasswordHasherFactoryInterface $encoder,

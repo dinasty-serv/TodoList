@@ -10,6 +10,8 @@ class DefaultController extends AbstractController
 {
     /**
      * @Route("/", name="homepage")
+     * @return Response
+     * @author Nicolas de Fontaine
      */
     public function indexAction(): Response
     {
