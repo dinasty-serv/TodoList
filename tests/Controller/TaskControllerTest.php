@@ -65,9 +65,11 @@ class TaskControllerTest extends WebTestCase
         $createTaskForm['task[title]'] = $titleTest;
         $createTaskForm['task[content]'] = $contentTest;
         $this->client->getClientLoginUser()->submit($createTaskForm);
+
         $crawler = $this->client->getClientLoginUser()->followRedirect();
+
         $successMessage = $crawler->filter('div.alert.alert-success')->text();
-        $this->assertStringContainsString('La tâche a été bien été ajoutée.', $successMessage);
+        $this->assertStringContainsString('Superbe ! La tâche a été bien été ajoutée.', $successMessage);
     }
 
     /**
