@@ -19,11 +19,18 @@ Dans le fichier .env configurer les accès à votre base de données.
 
 
 ## Déploiement de l'environement de Production
+
+Dans le .env vous devez modifier la ligne 17 :
+
+    APP_ENV=dev
+    à
+    APP_ENV=prod
+
 Dans le répertoire des sources taper la commande suivante
 
     composer prepare-prod
 
-Cette commande va installer et initialisé la base données en environnement de production, c-a-d sans les éléments de debug de symfony.
+Cette commande va installer et initialisé la base données en environnement de production, c-a-d sans les éléments de debug de symfony et sans les données test.
 
 
 ## Déploiement de l'environement de Développement
