@@ -59,20 +59,6 @@ jobs:
         uses: zhulik/redis-action@1.1.0
         with:
           redis version: '5'
-
-      ## —— Yarn 🐱 ————————————————————————————————————————————————————————————
-      - name: Yarn install
-        uses: actions/setup-node@v2
-        with:
-          node-version: '14'
-          #registry-url: npm.fontawesome.com
-      - run: yarn install
-          #env:
-        #NODE_AUTH_TOKEN: ${{ secrets.FONTAWESOME_NPM_AUTH_TOKEN }}
-
-      - name: Yarn build
-        run: yarn run encore production
-
       # —— Composer 🧙‍️ —————————————————————————————————————————————————————————
       - name: Validate composer.json and composer.lock
         run: composer validate
@@ -99,21 +85,6 @@ jobs:
         run: |
           bin/console about
           bin/console strangebuzz:version
-
-      ## —— Coding standards ✨ ————————————————————————————————————————————————
-      - name: Coding standards checks (php_codesniffer + php-cs-fixer)
-        run: make cs
-        if: matrix.php-versions == '8.0'
-
-      ## —— Static analysis ✨ —————————————————————————————————————————————————
-      - name: Static analysis of PHP code (PHPStan)
-        run: |
-          bin/console about --env=prod
-          make static-analysis
-
-      ## —— JWT 💫 —————————————————————————————————————————————————————————————
-      - name: Generate the SSL keys
-        run: bin/console lexik:jwt:generate-keypair
 
       ## —— Tests ✅ ———————————————————————————————————————————————————————————
       # We use the dev env here
