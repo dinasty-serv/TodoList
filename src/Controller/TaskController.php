@@ -118,7 +118,7 @@ class TaskController extends AbstractController
     public function toggle(Task $task, TaskService $taskService)
     {
         $taskService->toggle($task);
-        $this->addFlash('success', sprintf('La tâche %s a bien été marquée comme faite.', $task->getTitle()));
+        $this->addFlash('success', sprintf('La tâche %s a bien été modifié.', $task->getTitle()));
         return $this->redirectToRoute('task_list');
     }
 }

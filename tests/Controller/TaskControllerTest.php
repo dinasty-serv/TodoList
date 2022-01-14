@@ -57,17 +57,15 @@ class TaskControllerTest extends WebTestCase
     public function testCreateNewTask()
     {
 
-        $crawler = $this->client->getClientLoginUser()->request('GET', '/task/new');
-        $createTaskForm = $crawler->selectButton("Enregistrer")->form();
+        $client = $this->client->getClientLoginUser();
+        $page = $client->request('GET', '/task/new');
+        $createTaskForm = $page->selectButton("Enregistrer")->form();
         $titleTest = 'Test title task with functionnal testFormAddTask';
         $contentTest = 'Test content task with functionnal testFormAddTask';
-
         $createTaskForm['task[title]'] = $titleTest;
         $createTaskForm['task[content]'] = $contentTest;
-        $this->client->getClientLoginUser()->submit($createTaskForm);
-
-        $crawler = $this->client->getClientLoginUser()->followRedirect();
-
+        $client->submit($createTaskForm);
+        $crawler = $client->followRedirect();
         $successMessage = $crawler->filter('div.alert.alert-success')->text();
         $this->assertStringContainsString('Superbe ! La tâche a été bien été ajoutée.', $successMessage);
     }

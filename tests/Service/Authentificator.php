@@ -12,11 +12,11 @@ class Authentificator
     /**
      * @var KernelBrowser
      */
-    private $client;
+    private KernelBrowser $client;
     /**
      * @var EntityManagerInterface
      */
-    private $entityManager;
+    private EntityManagerInterface $entityManager;
 
     public function __construct(KernelBrowser $client, EntityManagerInterface $entityManager)
     {
