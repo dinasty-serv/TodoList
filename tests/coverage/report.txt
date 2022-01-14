@@ -1,0 +1,36 @@
+
+
+Code Coverage Report:      
+  2022-01-14 14:15:10      
+                           
+ Summary:                  
+  Classes: 53.85% (7/13)   
+  Methods: 74.19% (46/62)  
+  Lines:   82.63% (157/190)
+
+App\Controller\DefaultController
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  1/  1)
+App\Controller\SecurityController
+  Methods:   0.00% ( 0/ 2)   Lines:  66.67% (  4/  6)
+App\Controller\TaskController
+  Methods:  83.33% ( 5/ 6)   Lines:  93.75% ( 30/ 32)
+App\Controller\UserController
+  Methods: 100.00% ( 5/ 5)   Lines: 100.00% ( 27/ 27)
+App\Entity\Task
+  Methods:  83.33% (10/12)   Lines:  85.00% ( 17/ 20)
+App\Entity\User
+  Methods:  68.75% (11/16)   Lines:  58.62% ( 17/ 29)
+App\Form\TaskType
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  6/  6)
+App\Form\UserType
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% ( 10/ 10)
+App\Security\AppAuthenticator
+  Methods:  50.00% ( 2/ 4)   Lines:  25.00% (  3/ 12)
+App\Security\Voter\TaskVoter
+  Methods:  20.00% ( 1/ 5)   Lines:  77.27% ( 17/ 22)
+App\Service\Service
+  Methods: 100.00% ( 1/ 1)   Lines: 100.00% (  3/  3)
+App\Service\TaskService
+  Methods: 100.00% ( 4/ 4)   Lines: 100.00% ( 14/ 14)
+App\Service\UserService
+  Methods: 100.00% ( 2/ 2)   Lines: 100.00% (  8/  8)
