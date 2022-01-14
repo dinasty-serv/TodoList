@@ -6,13 +6,13 @@ use Doctrine\ORM\EntityManagerInterface;
 use http\Client;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use App\Tests\Service\Authentificator;
-
+use Doctrine\DBAL\Logging\Middleware;
 class DefaultControllerTest extends WebTestCase
 {
     /**
      * @var Authentificator
      */
-    private $client;
+    private Authentificator $client;
 
     public function setUp(): void
     {
