@@ -1,4 +1,6 @@
 {
+    "name": "Todo List",
+    "description": "TodoList project for openclassrooms",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
