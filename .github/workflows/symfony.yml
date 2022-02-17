@@ -59,7 +59,10 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
-        run: make install
+        run: composer install
+        
+      - name: Execute tests
+        run: composer prepare-test
 
       # —— Symfony 🎵 ——————————————————————————————————————————————————————————
       - name: Check Symfony requirements
@@ -69,15 +72,3 @@ jobs:
         run: |
           bin/console about
           bin/console strangebuzz:version
-
-      ## —— Tests ✅ ———————————————————————————————————————————————————————————
-      # We use the dev env here
-      - name: Load Doctrine fixtures and populate the Elasticsearch indexes
-        run: |
-          make load-fixtures
-          make populate
-
-      - name: Run functionnal and unit tests
-        run: |
-          cp phpunit.xml.ci phpunit.xml
-          ./vendor/bin/phpunit --testsuite='main'
