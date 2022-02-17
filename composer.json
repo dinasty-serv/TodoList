@@ -1,6 +1,6 @@
 {
-    "name": "Todo List",
     "description": "TodoList project for openclassrooms",
+    "name": "dinasty-serv/todolist",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",

@@ -117,7 +117,7 @@ class UserControllerTest extends WebTestCase
         );
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
 
-        $link = $crawler->selectLink("Voir")->link();
+        $link = $crawler->selectLink("Editer")->link();
         $client->click($link);
 
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
@@ -135,7 +135,7 @@ class UserControllerTest extends WebTestCase
             '/user/'
         );
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
-        $link = $crawler->selectLink("Voir")->link();
+        $link = $crawler->selectLink("Editer")->link();
         $crawler = $client->click($link);
         $this->assertEquals(200, $client->getResponse()->getStatusCode());
         $form = $crawler->selectButton("Supprimer")->form();
