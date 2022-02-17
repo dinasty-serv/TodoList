@@ -17,6 +17,10 @@ class Service
      */
     protected $encoder;
 
+    /**
+     * @param EntityManagerInterface $entityManager
+     * @param PasswordHasherFactoryInterface $encoder
+     */
     public function __construct(EntityManagerInterface $entityManager, PasswordHasherFactoryInterface $encoder)
     {
         $this->entityManager = $entityManager;

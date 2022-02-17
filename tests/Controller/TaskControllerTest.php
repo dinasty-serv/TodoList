@@ -50,22 +50,30 @@ class TaskControllerTest extends WebTestCase
         $this->assertEquals(200, $this->client->getClientLoginUser()->getResponse()->getStatusCode());
     }
 
+    /**
+     * Test create new task
+     * @return void
+     */
     public function testCreateNewTask()
     {
 
-        $crawler = $this->client->getClientLoginUser()->request('GET', '/task/new');
-        $createTaskForm = $crawler->selectButton("Enregistrer")->form();
+        $client = $this->client->getClientLoginUser();
+        $page = $client->request('GET', '/task/new');
+        $createTaskForm = $page->selectButton("Enregistrer")->form();
         $titleTest = 'Test title task with functionnal testFormAddTask';
         $contentTest = 'Test content task with functionnal testFormAddTask';
-
         $createTaskForm['task[title]'] = $titleTest;
         $createTaskForm['task[content]'] = $contentTest;
-        $this->client->getClientLoginUser()->submit($createTaskForm);
-        $crawler = $this->client->getClientLoginUser()->followRedirect();
+        $client->submit($createTaskForm);
+        $crawler = $client->followRedirect();
         $successMessage = $crawler->filter('div.alert.alert-success')->text();
-        $this->assertStringContainsString('La tâche a été bien été ajoutée.', $successMessage);
+        $this->assertStringContainsString('Superbe ! La tâche a été bien été ajoutée.', $successMessage);
     }
 
+    /**
+     * Test edit task
+     * @return void
+     */
     public function testEditTask()
     {
         $client = $this->client->getClientLoginUser();
@@ -90,6 +98,10 @@ class TaskControllerTest extends WebTestCase
         $this->assertStringContainsString('Superbe ! La tâche a été bien été modifé.', $successMessage);
     }
 
+    /**
+     * Test delete task
+     * @return void
+     */
     public function testDeleteTask()
     {
         $client = $this->client->getClientLoginUser();
@@ -105,6 +117,10 @@ class TaskControllerTest extends WebTestCase
         $this->assertStringContainsString('La tâche a été bien été supprimé.', $successMessage);
     }
 
+    /**
+     * Test Toggle Task
+     * @return void
+     */
     public function testToggleTask()
     {
 

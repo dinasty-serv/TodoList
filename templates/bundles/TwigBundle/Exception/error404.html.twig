@@ -1,0 +1,12 @@
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Oups - 404</h1>
+
+    <p>
+        La page demandé est introuvable :/
+
+    </p>
+    <p><a href="{{ path('homepage') }}">Retour à la page d'accueil</a>.</p>
+{% endblock %}
