@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-20.04
     services:
       # https://docs.docker.com/samples/library/mysql/
-      mysql:
+      dev_db:
         image: mysql:5.7
         env:
-          MYSQL_ROOT_PASSWORD: root
+          MYSQL_ROOT_PASSWORD: Apizee22
         ports:
           - 3306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
@@ -59,7 +59,10 @@ jobs:
           restore-keys: ${{ runner.os }}-composer-
 
       - name: Install Composer dependencies
-        run: make install
+        run: composer install
+        
+      - name: Execute tests
+        run: composer prepare-test
 
       # —— Symfony 🎵 ——————————————————————————————————————————————————————————
       - name: Check Symfony requirements
@@ -69,15 +72,3 @@ jobs:
         run: |
           bin/console about
           bin/console strangebuzz:version
-
-      ## —— Tests ✅ ———————————————————————————————————————————————————————————
-      # We use the dev env here
-      - name: Load Doctrine fixtures and populate the Elasticsearch indexes
-        run: |
-          make load-fixtures
-          make populate
-
-      - name: Run functionnal and unit tests
-        run: |
-          cp phpunit.xml.ci phpunit.xml
-          ./vendor/bin/phpunit --testsuite='main'
