@@ -60,9 +60,6 @@ jobs:
 
       - name: Install Composer dependencies
         run: composer install
-        
-      - name: Execute tests
-        run: composer prepare-test
 
       # —— Symfony 🎵 ——————————————————————————————————————————————————————————
       - name: Check Symfony requirements
@@ -72,3 +69,6 @@ jobs:
         run: |
           bin/console about
           bin/console strangebuzz:version
+          
+      - name: Execute tests
+        run: composer prepare-test
